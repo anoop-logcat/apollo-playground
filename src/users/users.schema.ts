@@ -1,9 +1,5 @@
 import { model, Schema } from "mongoose";
-
-type TUser = {
-  display_name: string;
-  email: string;
-};
+import { UserInput } from "../generated/sdk";
 
 const UserSchema: Schema = new Schema({
   display_name: {
@@ -17,6 +13,6 @@ const UserSchema: Schema = new Schema({
   },
 });
 
-const UserModel = model<TUser>("users", UserSchema);
+const UserModel = model<UserInput>("users", UserSchema);
 
-export { TUser, UserModel };
+export { UserInput, UserModel };

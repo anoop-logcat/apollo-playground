@@ -3,10 +3,10 @@ import { ApolloServer } from "apollo-server-express";
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
 import express, { Application } from "express";
+import { readFileSync } from "fs";
 import { connect as DBConnect } from "mongoose";
-import { HelloGraphql } from "./hello/hello.graphql";
+import { resolve } from "path";
 import { HelloResolver } from "./hello/hello.resolver";
-import { UsersGraphql } from "./users/users.graphql";
 import { UsersResolver } from "./users/users.resolver";
 require("dotenv").config();
 
@@ -22,7 +22,10 @@ async function startServer() {
 
   // Initializing Apollo Graphql Server
   const apolloServer = new ApolloServer({
-    typeDefs: [HelloGraphql, UsersGraphql],
+    typeDefs: [
+      readFileSync(resolve("src/hello/hello.graphql"), { encoding: "utf-8" }),
+      readFileSync(resolve("src/users/users.graphql"), { encoding: "utf-8" }),
+    ],
     resolvers: [HelloResolver, UsersResolver],
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
   });

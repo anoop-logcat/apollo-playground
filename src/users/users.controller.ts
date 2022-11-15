@@ -1,4 +1,5 @@
-import { TUser, UserModel } from "./users.model";
+import { UserInput } from "../generated/sdk";
+import { UserModel } from "./users.schema";
 
 class UsersController {
   constructor(private readonly userModel = UserModel) {}
@@ -11,7 +12,7 @@ class UsersController {
     return await this.userModel.findOne({ id });
   }
 
-  async insertOneUser(args: TUser) {
+  async insertOneUser(args: UserInput) {
     const user = new UserModel(args);
     return await user.save();
   }
