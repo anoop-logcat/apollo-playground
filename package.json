@@ -8,7 +8,7 @@
     "start": "ts-node ./src/app.ts",
     "start:prod": "npm run build && node ./dist/app.js",
     "start:nodemon": "./node_modules/nodemon/bin/nodemon.js",
-    "codegen": "graphql-codegen --config codegen.ts -w"
+    "codegen": "graphql-codegen --config codegen.yaml -w"
   },
   "author": "Anoop Benzier",
   "license": "ISC",

@@ -10,6 +10,8 @@ import { HelloResolver } from "./hello/hello.resolver";
 import { UsersResolver } from "./users/users.resolver";
 require("dotenv").config();
 
+export interface MyContext {}
+
 async function startServer() {
   // Initializing Express Application
   const app: Application = express();
@@ -21,7 +23,7 @@ async function startServer() {
   await DBConnect(process.env.MONGO_URL as string);
 
   // Initializing Apollo Graphql Server
-  const apolloServer = new ApolloServer({
+  const apolloServer = new ApolloServer<MyContext>({
     typeDefs: [
       readFileSync(resolve("src/hello/hello.graphql"), { encoding: "utf-8" }),
       readFileSync(resolve("src/users/users.graphql"), { encoding: "utf-8" }),
