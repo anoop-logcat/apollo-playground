@@ -10,7 +10,7 @@
     "start:nodemon": "./node_modules/nodemon/bin/nodemon.js",
     "codegen": "graphql-codegen --config codegen.yaml -w"
   },
-  "author": "Anoop Benzier",
+  "author": "Anoop-logcat",
   "license": "ISC",
   "dependencies": {
     "apollo-server-core": "^3.11.1",
